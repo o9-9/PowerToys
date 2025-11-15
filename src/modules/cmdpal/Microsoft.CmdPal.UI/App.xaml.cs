@@ -111,6 +111,7 @@ public partial class App : Application
         services.AddSingleton(TaskScheduler.FromCurrentSynchronizationContext());
         services.AddSingleton<IAppHostService, PowerToysAppHostService>();
         services.AddSingleton<ITelemetryService, TelemetryForwarder>();
+        services.AddSingleton<IPageViewModelFactoryService, CommandPalettePageViewModelFactory>();
 
         // TODO: Register ILogger
 
@@ -170,16 +171,17 @@ public partial class App : Application
         services.AddSingleton<IRunHistoryService, RunHistoryService>();
 
         // ViewModels
-        services.AddSingleton<ShellViewModel>();
+        services.AddSingleton<IRootPageService, PowerToysRootPageService>();
         services.AddSingleton<SettingsViewModel>();
-        services.AddSingleton<IPageViewModelFactoryService, CommandPalettePageViewModelFactory>();
+        services.AddSingleton<ShellViewModel>();
 
         // Views
-        services.AddSingleton<IRootPageService, PowerToysRootPageService>();
         services.AddSingleton<MainWindow>();
         services.AddSingleton<ShellPage>();
 
         services.AddTransient<ListPage>();
+
+        // Settings Pages
         services.AddTransient<GeneralPage>();
         services.AddTransient<ExtensionPage>();
         services.AddTransient<ExtensionsPage>();

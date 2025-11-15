@@ -34,10 +34,10 @@ public partial class TopLevelCommandManager : ObservableObject,
 
     TaskScheduler IPageContext.Scheduler => _taskScheduler;
 
-    public TopLevelCommandManager(IServiceProvider serviceProvider)
+    public TopLevelCommandManager(IServiceProvider serviceProvider, TaskScheduler taskScheduler)
     {
         _serviceProvider = serviceProvider;
-        _taskScheduler = _serviceProvider.GetService<TaskScheduler>()!;
+        _taskScheduler = taskScheduler;
         WeakReferenceMessenger.Default.Register<ReloadCommandsMessage>(this);
         _reloadCommandsGate = new(ReloadAllCommandsAsyncCore);
     }

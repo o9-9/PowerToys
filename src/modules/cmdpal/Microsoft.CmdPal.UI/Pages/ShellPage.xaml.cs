@@ -74,7 +74,10 @@ public sealed partial class ShellPage : Microsoft.UI.Xaml.Controls.Page,
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    public ShellPage(ShellViewModel shellViewModel, SettingsModel settingsModel, TopLevelCommandManager topLevelCommandManager)
+    public ShellPage(
+        ShellViewModel shellViewModel,
+        SettingsModel settingsModel,
+        TopLevelCommandManager topLevelCommandManager)
     {
         this.InitializeComponent();
 
