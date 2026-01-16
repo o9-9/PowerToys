@@ -1962,6 +1962,7 @@ visualeffects
 vkey
 vmovl
 VMs
+vnd
 vorrq
 VOS
 vpaddlq
